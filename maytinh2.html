@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div#calculator {
+        width: 175px;
+        padding: 3px;
+    }
+
+    button {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 3px;
+    }
+
+    input#screen {
+        width: 166px;
+        height: 40px;
+        margin-bottom: 5px;
+        font-size: 25px;
+        text-align: right;
+        background-color: darkgray;
+    }
+    button#zero {
+        width: 84px;
+        border-radius: 30px;
+    }
+</style>
+<body>
+<div id="calculator">
+    <input id="screen">
+    <br>
+    <button onclick="clearScreen()">C</button>
+    <button onclick="del()">del</button>
+    <button onclick="percent()">%</button>
+    <button onclick="clickNumber('/')">/</button>
+    <br>
+    <button onclick="clickNumber(7)">7</button>
+    <button onclick="clickNumber(8)">8</button>
+    <button onclick="clickNumber(9)">9</button>
+    <button onclick="clickNumber('*')">x</button>
+    <br>
+    <button onclick="clickNumber(4)">4</button>
+    <button onclick="clickNumber(5)">5</button>
+    <button onclick="clickNumber(6)">6</button>
+    <button onclick="clickNumber('-')">-</button>
+    <br>
+    <button onclick="clickNumber(1)">1</button>
+    <button onclick="clickNumber(2)">2</button>
+    <button onclick="clickNumber(3)">3</button>
+    <button onclick="clickNumber('+')">+</button>
+    <br>
+    <button id="zero" onclick="clickNumber(0)">0</button>
+    <button onclick="clickNumber('.')">.</button>
+    <button onclick="calculate()">=</button>
+</div>
+<script>
+    // hàm để nhập giá trị
+    function clickNumber(value) {
+        document.getElementById("screen").value += value;
+    }
+
+    // hàm tính kết quả dấu =
+    // eval để định giá trị một biểu thức và trả về kết quả
+    function calculate() {
+        let cal = document.getElementById("screen").value;
+        let result = eval(cal);
+        display(result);
+    }
+
+    function display(value) {
+        document.getElementById("screen").value = value;
+    }
+
+    // hàm xóa hiển thị về 0
+    function clearScreen() {
+        document.getElementById("screen").value = 0;
+    }
+
+    // hàm xóa hiện thị đi 1 số
+    // substring sử dung để cắt chuỗi
+    function del() {
+        let str = document.getElementById("screen").value;
+        let res = str.substring(0, str.length - 1);
+        display(res);
+    }
+</script>
+
+</body>
+</html>
